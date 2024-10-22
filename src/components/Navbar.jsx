@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({ onSearch }) => {
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+    onSearch(e.target.value);
+  };
+
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
@@ -27,10 +34,10 @@ const Navbar = () => {
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-40 p-2 shadow"
           >
             <li>
-              <Link to={'/'}>Home</Link>
+              <Link to={"/"}>Home</Link>
             </li>
             <li>
-              <Link to={'/users'}>Users</Link>
+              <Link to={"/users"}>Users</Link>
             </li>
             <li>
               <a>About</a>
@@ -39,12 +46,16 @@ const Navbar = () => {
         </div>
       </div>
       <div className="navbar-center md:-ml-8">
-        <Link to={'/'} className="btn btn-ghost text-xl">UserDeck</Link>
+        <Link to={"/"} className="btn btn-ghost text-xl">
+          UserDeck
+        </Link>
       </div>
       <div className="navbar-end pe-3 gap-4">
         <div className="form-control">
           <input
             type="text"
+            value={searchQuery}
+            onChange={handleSearchChange}
             placeholder="Search"
             className="input input-bordered w-24 md:w-auto max-md:hidden"
           />
