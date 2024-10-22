@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
-import loaderWebM from "../assets/animationv1.webM";
+import loaderWebM from "../assets/animationv1.webm";
 import UserCard from "../components/UserCard";
 import UserModal from "../components/UserModal";
 
